@@ -15,9 +15,9 @@
       
     var list= [];
 
-    <c:forEach items="${list}" var="item" varStatus="status"> 
-        var curString= '${item}';
-        list.push(curString);
+    <c:forEach var="msg" items="${list.messages}"> 
+        var messageId= '${msg.messageId}';
+        list.push(messageId);
     </c:forEach> 
       
   </script>
@@ -26,11 +26,7 @@
 
   <div data-role="page" id="methods">
     <ul data-role="listview" id="methods-list">
-      <li><a href="#">Adam Kinkaid</a></li>
-      <li><a href="#">Alex Wickerham</a></li>
-      <li><a href="#">Avery Johnson</a></li>
-      <li><a href="#">Bob Cabot</a></li>
-      <li><a href="#">Caleb Booth</a></li>
+      <li><a href="#">Get Message list</a></li>
     </ul> 
   </div>
 
@@ -40,8 +36,18 @@
 
     $('#methods-list li').click(function(){
 
-      $(this).append('<ul><li>Test</li></ul>').parent().listview('refresh');
+      if(list){
+          // append a ul to this li
+          var ul= $('<ul>');
+          $(this).append(ul);
 
+          // append the children based on the contents of `list`
+          $(list).each(function(item, value){
+              $(ul).append('<li>'+ value + '</li>');
+          });
+          // update CSS
+          $(this).parent().listview('refresh');
+      }
     });
   });
   </script>      

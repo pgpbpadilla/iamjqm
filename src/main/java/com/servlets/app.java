@@ -6,9 +6,15 @@
 
 package com.servlets;
 
+import com.att.api.immn.service.IMMNService;
+import com.att.api.immn.service.MessageList;
+import com.att.api.oauth.OAuthToken;
+import com.att.api.rest.RESTException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,15 +39,19 @@ public class app extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        ArrayList<String> list= new ArrayList<String>();
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        
-        request.getSession().setAttribute("list", list);
-       
-        response.sendRedirect("app.jsp");
+        try {
+            
+            OAuthToken token= new OAuthToken("bY02hSSp3BCxD9dGqi0W38NS7F0WDXZY", 
+                    OAuthToken.NO_EXPIRATION, null);
+            IMMNService immn= new IMMNService("https://api-stage.mars.bf.sl.attcompute.com",
+                    token);
+            MessageList msgList= immn.getMessageList(10, 0);
+            request.getSession().setAttribute("list", msgList);
+            
+            response.sendRedirect("app.jsp");
+        } catch (RESTException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
