@@ -16,14 +16,15 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.att.api</groupId>
-            <artifactId>codekit</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.att.api</groupId>
+            <artifactId>codekit</artifactId>
+            <version>1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
