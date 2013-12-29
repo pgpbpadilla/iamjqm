@@ -11,6 +11,7 @@
         <title>IAM + jQuery Mobile Demo</title>
         
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+        <link rel="stylesheet" href="css/default.css">
         
         <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
@@ -45,7 +46,7 @@
                 <li><a href="#">Get Message list</a></li>
             </ul> 
 
-            <div data-role="popup" id="popupBasic">
+            <div data-role="popup" id="popupBasic" class="dialog">
                 <h3>Delete message?</h3>
                 <a data-role="button" href="#" 
                    class="deleteMessage">Delete</a>
