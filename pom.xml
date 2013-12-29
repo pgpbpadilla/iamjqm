@@ -16,15 +16,14 @@
     
     <dependencies>
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>com.att.api</groupId>
             <artifactId>codekit</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -84,5 +83,15 @@
             </plugin>
         </plugins>
     </build>
+    
+    <repositories>
+        <!--other repositories if any-->
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository>
+
+    </repositories>
 
 </project>
