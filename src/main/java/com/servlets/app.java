@@ -45,7 +45,7 @@ public class app extends HttpServlet {
                     OAuthToken.NO_EXPIRATION, null);
             IMMNService immn= new IMMNService("https://api-stage.mars.bf.sl.attcompute.com",
                     token);
-            MessageList msgList= immn.getMessageList(10, 0);
+            MessageList msgList= immn.getMessageList(30, 0);
             request.getSession().setAttribute("list", msgList);
             
             response.sendRedirect("app.jsp");
