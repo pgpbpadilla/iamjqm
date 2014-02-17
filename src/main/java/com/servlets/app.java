@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.servlets
+package com.servlets;
 
 import com.att.api.immn.service.IMMNService;
 import com.att.api.immn.service.MessageList;
